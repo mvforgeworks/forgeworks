@@ -4,60 +4,102 @@
   --font-sans: var(--font-inter);
   --font-serif: var(--font-playfair);
   
-  /* Midwest Color Palette */
-  --navy: #1a365d;
-  --navy-dark: #0f2744;
-  --prairie-green: #2d5a27;
-  --prairie-green-light: #4a7c59;
-  --warm-neutral: #f5f1e9;
-  --warm-neutral-dark: #e8e0d1;
-  --text-primary: #1a365d;
-  --text-secondary: #4a5568;
-  --white: #ffffff;
-  --border-light: #e2d9c9;
+  /* ForgeWorks Dark Theme */
+  --bg: #0a0a0c;
+  --bg-card: #111113;
+  --border: #1f2024;
+  --text-primary: #ededed;
+  --text-secondary: #a1a1a8;
+  
+  /* Purple / Gold accents */
+  --purple: #7c3aed;
+  --purple-dark: #5b21b6;
+  --gold: #d4af37;
+  --gold-dark: #b8972e;
 }
 
 body {
   font-family: var(--font-sans);
+  background: var(--bg);
   color: var(--text-primary);
-  background: var(--white);
 }
 
 /* Typography */
-h1, h2, .heading-serif {
+.heading-serif {
   font-family: var(--font-serif);
-}
-
-/* Buttons */
-.btn-primary {
-  background-color: var(--navy);
-  color: var(--white);
-  transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-  background-color: var(--navy-dark);
-}
-
-.btn-secondary {
-  border: 2px solid var(--prairie-green);
-  color: var(--prairie-green);
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  background-color: var(--prairie-green);
-  color: var(--white);
 }
 
 /* Cards */
 .card {
-  background: var(--white);
-  border: 1px solid var(--border-light);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   transition: all 0.2s ease;
 }
 
 .card:hover {
-  border-color: var(--prairie-green);
-  box-shadow: 0 4px 12px rgba(45, 90, 39, 0.08);
+  border-color: var(--purple);
+  box-shadow: 0 0 0 1px var(--purple);
+}
+
+/* Buttons */
+.btn-primary {
+  background: var(--purple);
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--purple-dark);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #0a0a0c;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  background: var(--gold-dark);
+}
+
+/* Section headers */
+.section-header {
+  position: relative;
+  display: inline-block;
+}
+
+.section-header:after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+}
+
+/* Tier cards */
+.tier-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tier-card.popular {
+  border-color: var(--gold);
+  position: relative;
+}
+
+.tier-card.popular:before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--gold);
+  color: #0a0a0c;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 2px 14px;
+  border-radius: 9999px;
 }
