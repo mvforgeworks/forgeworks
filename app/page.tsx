@@ -1,140 +1,143 @@
-export default function ForgeWorks() {
-  return (
-    <div className="min-h-screen bg-[#0a0a0c] text-white">
-      {/* Navigation */}
-      <nav className="border-b border-[#1f2024]">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-[#7c3aed] rounded flex items-center justify-center">
-              <span className="text-white font-bold text-xl">F</span>
-            </div>
-            <span className="font-semibold text-2xl tracking-[-1px]">ForgeWorks</span>
+    tsx
+    'use client';
+    import React, { useState } from 'react';
+    
+    export default function MVForgeHome() {
+      const [formData, setFormData] = useState({ name: '', email: '', business: '', message: '' });
+      const [submitted, setSubmitted] = useState(false);
+    
+      const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log('[lead]', formData);
+        setSubmitted(true);
+        setTimeout(() => { setSubmitted(false); setFormData({ name: '', email: '', business: '', message: '' }); }, 2000);
+      };
+    
+      const scrollTo = (id: string) => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+    
+      return (
+        <div className="min-h-screen bg-[#F8F5F0] text-[#2C3E50]">
+          <div className="bg-[#0A2540] text-white py-2 text-center text-sm font-medium tracking-[1.5px]">
+            OHIO-BUILT • VETERAN-OWNED • NO HYPE — JUST RESULTS
           </div>
-          <div className="flex items-center gap-9 text-sm font-medium">
-            <a href="#model" className="hover:text-[#d4af37] transition-colors">How it works</a>
-            <a href="#tiers" className="hover:text-[#d4af37] transition-colors">Tiers</a>
-            <a href="#seo" className="hover:text-[#d4af37] transition-colors">Local SEO</a>
-            <a href="mailto:forge@mvforge.io" className="btn-primary px-6 py-2.5 rounded-full text-sm">Get started</a>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero */}
-      <section className="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center">
-        <div className="inline-block px-4 py-1 rounded-full bg-[#111113] border border-[#1f2024] text-sm mb-6">
-          Your Digital Revenue Engine
-        </div>
-        <h1 className="heading-serif text-7xl font-semibold tracking-[-2.5px] leading-none mb-8">
-          Forge Leads.<br />Forge Jobs.<br />Forge Growth.
-        </h1>
-        <p className="max-w-2xl mx-auto text-2xl text-[#a1a1a8] mb-10 tracking-tight">
-          We build high-converting niche service websites that deliver exclusive leads and jobs — one client per niche.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="mailto:forge@mvforge.io" className="btn-primary px-10 py-4 rounded-full text-lg">Start building revenue</a>
-          <a href="#model" className="border border-[#1f2024] hover:bg-[#111113] px-10 py-4 rounded-full text-lg">See the model</a>
-        </div>
-      </section>
-
-      {/* Model */}
-      <section id="model" className="border-y border-[#1f2024] bg-[#111113]">
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="text-center mb-14">
-            <div className="text-[#d4af37] text-sm tracking-[3px] font-medium">THE FORGEWORKS MODEL</div>
-            <h2 className="heading-serif text-5xl font-semibold tracking-tight mt-3">One client. One niche. All the leads.</h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            {[
-              { title: "We own the niche", desc: "Targeted websites for profitable service industries: Tree Services, Junk Removal, Landscaping, HVAC, and more." },
-              { title: "You own the leads", desc: "Exclusive access — no one else in your niche gets the leads or jobs from your site." },
-              { title: "We rank locally", desc: "Local SEO, Google Business Profile optimization, citations, and content that wins the map pack." },
-            ].map((item, i) => (
-              <div key={i} className="card p-8 rounded-2xl">
-                <h3 className="font-semibold text-2xl mb-4 tracking-tight">{item.title}</h3>
-                <p className="leading-relaxed text-[#a1a1a8]">{item.desc}</p>
+    
+          <nav className="border-b border-[#E5E0D8] bg-white sticky top-0 z-50">
+            <div className="max-w-7xl mx-auto px-8 flex items-center justify-between h-20">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 bg-[#0A2540] flex items-center justify-center rounded"><span className="text-white font-bold text-xl tracking-[-1px]">MV</span></div>
+                <div><div className="font-semibold text-2xl tracking-[-1.5px] text-[#0A2540]">MVFORGE</div><div className="text-[10px] text-[#4A5568] -mt-1">SECURE • SELF-OWNED • MASTERED</div></div>
               </div>
-            ))}
+              <div className="hidden md:flex items-center gap-10 text-sm font-medium">
+                <button onClick={() => scrollTo('products')} className="hover:text-[#0A2540]">PRODUCTS</button>
+                <a href="https://forgeworks.mvforge.io" className="hover:text-[#0A2540]">FORGEWORKS</a>
+                <a href="https://audit.mvforge.io" className="hover:text-[#0A2540]">AUDITFORGE</a>
+                <a href="https://domainforge.mvforge.io" className="hover:text-[#0A2540]">DOMAINFORGE</a>
+              </div>
+              <button onClick={() => scrollTo('contact')} className="bg-[#0A2540] hover:bg-[#132f52] text-white px-6 py-2.5 rounded-full text-sm font-medium">GET STARTED</button>
+            </div>
+          </nav>
+    
+          <section className="max-w-5xl mx-auto px-8 pt-20 pb-16 text-center">
+            <div className="inline-block px-4 py-1.5 bg-[#0A2540] text-white text-xs tracking-[2px] mb-6 rounded">LOGAN COUNTY, OHIO • SERVING THE HEARTLAND</div>
+            <h1 className="text-6xl md:text-7xl leading-[1.05] tracking-[-2.8px] font-semibold text-[#0A2540] max-w-5xl mx-auto mb-6">
+              You’re not just building a website.<br />
+              You’re building a <span className="text-[#2E7D32]">Revenue Machine</span>.
+            </h1>
+            <p className="text-2xl tracking-tight text-[#2C3E50] max-w-3xl mx-auto mb-10">
+              Professional websites, cybersecurity, and domain ownership for Ohio small businesses.<br />
+              <span className="font-semibold">Landlords &amp; property managers</span> are our top vertical.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onClick={() => scrollTo('contact')} className="bg-[#0A2540] hover:bg-[#132f52] text-white px-10 py-4 rounded-full text-lg font-medium">GET YOUR FREE REVENUE MACHINE ASSESSMENT</button>
+              <button onClick={() => scrollTo('products')} className="border border-[#0A2540] hover:bg-[#0A2540] hover:text-white px-10 py-4 rounded-full text-lg font-medium">SEE THE THREE FORGES</button>
+            </div>
+          </section>
+    
+          <div className="border-y border-[#E5E0D8] py-6 bg-white">
+            <div className="max-w-6xl mx-auto px-8 flex flex-wrap justify-center gap-x-12 gap-y-4 text-sm text-[#4A5568] font-medium tracking-wide">
+              <div>100-MILE RADIUS • LOGAN • AUGLAIZE • HARDIN • SHELBY</div>
+              <div>LANDLORDS • TREE SERVICE • JUNK REMOVAL • TOWING • LANDSCAPING</div>
+              <div>VETERAN-OWNED • 30 YEARS IT EXPERIENCE</div>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Tiers */}
-      <section id="tiers" className="max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-14">
-          <div className="text-[#d4af37] text-sm tracking-[3px] font-medium">PRICING</div>
-          <h2 className="heading-serif text-5xl font-semibold tracking-tight mt-3 mb-3">Choose your edge.</h2>
-          <p className="text-xl text-[#a1a1a8]">All tiers include a high-performing website built for your niche.</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { name: "Basic", price: "800", features: ["Professionally designed site", "Lead capture forms", "Mobile responsive", "Basic SEO setup", "1 revision round"], popular: false },
-            { name: "Intermediate", price: "1,600", features: ["Everything in Basic", "Full Local SEO foundation", "Google Business Profile setup", "Citation building", "Monthly performance report", "Ongoing content updates"], popular: true },
-            { name: "Premium", price: "2,800", features: ["Everything in Intermediate", "Advanced Local SEO execution", "Rank tracking & audits", "Premium design customizations", "Priority support", "Monthly strategy calls"], popular: false },
-          ].map((tier, index) => (
-            <div key={index} className={`tier-card card p-8 rounded-3xl flex flex-col ${tier.popular ? 'popular' : ''}`}>
-              <div>
-                <div className="font-semibold text-3xl">{tier.name}</div>
-                <div className="mt-6 flex items-baseline gap-1">
-                  <span className="text-6xl font-semibold tabular-nums">${tier.price}</span>
-                  <span className="text-[#a1a1a8]">one-time</span>
+    
+          <section id="products" className="max-w-7xl mx-auto px-8 pt-20 pb-16">
+            <div className="text-center mb-14">
+              <div className="text-xs tracking-[3px] text-[#4A5568] mb-2">THREE TOOLS. ONE SHIELD.</div>
+              <h2 className="text-5xl tracking-[-2px] font-semibold text-[#0A2540]">The Forge Family</h2>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white p-8 rounded-2xl border border-[#E5E0D8] hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                <div className="uppercase tracking-[2px] text-xs text-[#8B3A3A] mb-4 font-medium">FORGEWORKS</div>
+                <h3 className="text-3xl font-semibold tracking-tight mb-4 text-[#0A2540]">High-Converting Websites</h3>
+                <p className="text-[#4A5568] mb-8">Professional websites that generate leads for local service businesses and landlords.</p>
+                <div className="pt-4 border-t text-xs text-[#4A5568]">Starting at $799 one-time + $49/mo</div>
+              </div>
+              <div className="bg-white p-8 rounded-2xl border border-[#E5E0D8] hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                <div className="uppercase tracking-[2px] text-xs text-[#8B3A3A] mb-4 font-medium">AUDITFORGE</div>
+                <h3 className="text-3xl font-semibold tracking-tight mb-4 text-[#0A2540]">Cybersecurity Audits</h3>
+                <p className="text-[#4A5568] mb-8">Practical cybersecurity audits to protect your business and tenant data.</p>
+                <div className="pt-4 border-t text-xs text-[#4A5568]">One-time audit from $1,200</div>
+              </div>
+              <div className="bg-white p-8 rounded-2xl border border-[#E5E0D8] hover:shadow-xl hover:-translate-y-0.5 transition-all">
+                <div className="uppercase tracking-[2px] text-xs text-[#8B3A3A] mb-4 font-medium">DOMAINFORGE</div>
+                <h3 className="text-3xl font-semibold tracking-tight mb-4 text-[#0A2540]">Domain Strategy &amp; Ownership</h3>
+                <p className="text-[#4A5568] mb-8">Secure domain acquisition and full ownership for your brand.</p>
+                <div className="pt-4 border-t text-xs text-[#4A5568]">Project-based pricing</div>
+              </div>
+            </div>
+          </section>
+    
+          <section className="bg-white py-20 border-y border-[#E5E0D8]">
+            <div className="max-w-6xl mx-auto px-8">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#2E7D32]/10 text-[#2E7D32] text-xs tracking-[2px] rounded-full mb-4">⭐ OHIO VETERAN-OWNED • 30 YEARS IT EXPERIENCE</div>
+                <h2 className="text-5xl tracking-[-2px] font-semibold text-[#0A2540]">Real Results from Real Ohio Businesses</h2>
+              </div>
+              <div className="grid md:grid-cols-3 gap-8">
+                {[
+                  { quote: "MVForge turned our junk removal site into a lead machine. We went from 2-3 calls a week to 15+.", name: "Mike R., Junk Removal, Bellefontaine" },
+                  { quote: "The cybersecurity audit gave us peace of mind. Professional, no-nonsense, exactly what a small business needs.", name: "Sarah T., Property Management, Lima" },
+                  { quote: "Finally own my domain and website outright. Worth every penny.", name: "Tom K., Tree Service, Wapakoneta" }
+                ].map((t, i) => (
+                  <div key={i} className="bg-[#F8F5F0] p-8 rounded-2xl border border-[#E5E0D8] hover:shadow-lg transition-all">
+                    <p className="text-[#2C3E50] mb-6">"{t.quote}"</p>
+                    <div className="font-semibold text-[#0A2540]">— {t.name}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+    
+          <section id="contact" className="max-w-2xl mx-auto px-8 py-20">
+            <div className="text-center mb-10">
+              <h2 className="text-5xl tracking-[-2px] font-semibold text-[#0A2540] mb-4">Ready to build your Revenue Machine?</h2>
+              <p className="text-xl text-[#4A5568]">Get your free assessment. No pressure. Just clarity.</p>
+            </div>
+            {!submitted ? (
+              <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl border border-[#E5E0D8] space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <input type="text" placeholder="Your Name" required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="border border-[#E5E0D8] px-5 py-3.5 rounded-xl" />
+                  <input type="email" placeholder="Business Email" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="border border-[#E5E0D8] px-5 py-3.5 rounded-xl" />
                 </div>
+                <input type="text" placeholder="Business Type (Landlord, Tree Service, etc.)" required value={formData.business} onChange={e => setFormData({...formData, business: e.target.value})} className="w-full border border-[#E5E0D8] px-5 py-3.5 rounded-xl" />
+                <textarea placeholder="Tell us about your current setup" rows={4} required value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="w-full border border-[#E5E0D8] px-5 py-3.5 rounded-xl" />
+                <button type="submit" className="w-full bg-[#0A2540] hover:bg-[#132f52] text-white py-4 rounded-full text-lg font-medium">REQUEST MY FREE ASSESSMENT</button>
+              </form>
+            ) : (
+              <div className="bg-[#2E7D32] text-white p-10 rounded-2xl text-center">
+                <div className="text-2xl font-semibold mb-2">Thank you. We’ll be in touch shortly.</div>
               </div>
-              <ul className="mt-9 mb-auto space-y-3 text-[#a1a1a8]">
-                {tier.features.map((f, fi) => (
-                  <li key={fi} className="flex gap-3">
-                    <span className="text-[#d4af37] mt-1">→</span> {f}
-                  </li>
-                ))}
-              </ul>
-              <a href="mailto:forge@mvforge.io?subject=ForgeWorks%20-%20{tier.name}%20Tier" className={`mt-8 block text-center py-4 rounded-2xl text-lg ${tier.popular ? 'btn-gold' : 'border border-[#1f2024] hover:bg-[#111113]'}`}>
-                Get started
-              </a>
-            </div>
-          ))}
+            )}
+          </section>
+    
+          <footer className="border-t border-[#E5E0D8] py-8 bg-white text-center text-sm text-[#4A5568]">
+            © {new Date().getFullYear()} MVForge • Logan County, Ohio
+          </footer>
         </div>
-      </section>
+      );
+    }
 
-      {/* Local SEO Services */}
-      <section id="seo" className="bg-[#111113] border-y border-[#1f2024]">
-        <div className="max-w-6xl mx-auto px-6 py-20">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <div className="text-[#d4af37] text-sm tracking-[3px] font-medium mb-3">LOCAL SEO ENGINE</div>
-              <h3 className="heading-serif text-5xl font-semibold tracking-tight leading-none">Rank where it matters most.</h3>
-            </div>
-            <div className="pt-3 text-xl text-[#a1a1a8] space-y-6">
-              <p>Strong websites are only half the battle. We pair every ForgeWorks site with proven local SEO services that drive real results.</p>
-              <div className="pt-4 space-y-3 text-lg text-white">
-                {["Google Business Profile optimization", "Local citation building", "Targeted location pages", "Map pack ranking audits", "Monthly visibility reports"].map((s, i) => (
-                  <div key={i}>• {s}</div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* DomainForge integration */}
-      <section className="max-w-6xl mx-auto px-6 py-20 border-b border-[#1f2024]">
-        <div className="flex flex-col md:flex-row md:items-center gap-y-8 md:justify-between">
-          <div>
-            <div className="text-[#d4af37] text-sm tracking-[3px] font-medium">POWERED BY DOMAINFORGE</div>
-            <div className="heading-serif text-4xl font-semibold tracking-tight mt-2">Smarter domains. Better results.</div>
-          </div>
-          <a href="https://domainforge.mvforge.io" target="_blank" className="btn-primary px-8 py-4 rounded-full inline-block">Explore DomainForge</a>
-        </div>
-        <p className="mt-6 text-[#a1a1a8]">Internal access to domain auctions, valuation tools, and premium niche name acquisition.</p>
-      </section>
-
-      {/* CTA Footer */}
-      <footer className="max-w-5xl mx-auto px-6 py-20 text-center">
-        <h2 className="heading-serif text-6xl tracking-tight font-semibold">Ready to own your niche?</h2>
-        <p className="mt-6 text-2xl text-[#a1a1a8]">Let’s build your revenue engine.</p>
-        <a href="mailto:forge@mvforge.io" className="btn-gold mt-10 inline-block px-12 py-4 rounded-full text-xl">Contact ForgeWorks</a>
-        <div className="mt-20 text-sm text-[#666]">ForgeWorks — A division of MVForge • forge@mvforge.io</div>
-      </footer>
-    </div>
-  );
-}
